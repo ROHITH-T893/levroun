@@ -191,7 +191,7 @@ export default function Home() {
               <p>From MVP to enterprise-grade apps, we’ve got you.</p>
             </div>
             <div className="card3">
-              <h2>Spending Too Much Time on Repetitive Tasks? </h2>
+              <h2>Spending Too Much Time on Repetitive Tasks?</h2>
               <p>We automate workflows so you can focus on what matters.</p>
             </div>
             <div className="card4">
