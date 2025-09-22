@@ -329,10 +329,10 @@ export default function Home() {
       <section id="why_us_section">
         <div className="why_us_container">
           <h1>Why Choose Us?</h1>
-          <p>
+          <h6>
             We deliver quality, speed, and scalability — without breaking your
             budget.
-          </p>
+          </h6>
           <div className="why_us_card_hold">
             <div className="why_us_card">
               <img src="/images/whyUs_img1.png" alt="" />
