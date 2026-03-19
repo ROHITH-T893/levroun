@@ -1,0 +1,136 @@
+/* src/styles/admin-login.module.css */
+
+.loginContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1AC2FF 0%, #060134 100%);
+  padding: 20px;
+}
+
+.loginBox {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+.loginHeader {
+  background: linear-gradient(135deg, #1AC2FF 0%, #060134 100%);
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.loginHeader h1 {
+  margin: 0 0 5px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.loginHeader p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.loginForm {
+  padding: 30px 20px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formGroup label {
+  font-weight: 600;
+  color: #060134;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.formGroup input {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s;
+  font-family: inherit;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #1AC2FF;
+  box-shadow: 0 0 0 3px rgba(26, 194, 255, 0.1);
+}
+
+.formGroup input:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.errorMessage {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  font-size: 13px;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #1AC2FF 0%, #00A8E6 100%);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin-bottom: 20px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(26, 194, 255, 0.3);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loginFooter {
+  padding: 20px;
+  background: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  text-align: center;
+  font-size: 13px;
+}
+
+.loginFooter p {
+  margin: 0 0 5px 0;
+  color: #666;
+}
+
+@media (max-width: 480px) {
+  .loginBox {
+    border-radius: 0;
+  }
+
+  .loginHeader {
+    padding: 20px 15px;
+  }
+
+  .loginForm {
+    padding: 20px 15px;
+  }
+}

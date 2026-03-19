@@ -6,6 +6,7 @@ import Nav from "@/components/Nav";
 import React, { useState } from "react";
 import MobileNavigation from "@/components/MobileNavigation.js";
 import Footer from "@/components/Footer";
+import DynamicServices from "@/components/DynamicServices";
 import "./globals.css";
 import "../styles/MobileNavigation.css";
 import "../styles/Footer.css";
@@ -263,68 +264,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20" id="services_section">
-        <div className="services_container">
-          <div className="text-center mb-16">
-            <h2
-              className="text-2xl md:text-3xl font-bold mb-4"
-              style={{ color: "#060134" }}
-            >
-              What We Offer !
-            </h2>
-            <p className="services_description">
-              Tailored digital solutions that scale with your ambition.
-            </p>
-          </div>
-
-          <div className="service_card_hold">
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service-img1.png" alt="" />
-              <div className="service_card_text">
-                <h1>Web Development</h1>
-                <p>Custom websites built with modern tech — fast, responsive, scalable, and designed to convert.</p>
-              </div>
-            </div>
-
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service_img2.png" alt="" />
-              <div className="service_card_text">
-                <h1>App Development</h1>
-                <p>Cross-platform mobile and web apps with seamless UI/UX for startups and enterprises.</p>
-              </div>
-            </div>
-
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service-img3.png" alt="" />
-              <div className="service_card_text">
-                <h1> Graphic Designing</h1>
-                <p>Posters, flyers, banners, and digital creatives that speak your brand’s visual language.</p>
-              </div>
-            </div>
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service_img4.png" alt="" />
-              <div className="service_card_text">
-                <h1>E-Commerce Solutions</h1>
-                <p>End-to-end online store setups with custom pricing logic, CMS, Paytm integration & more.</p>
-              </div>
-            </div>
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service_img5.png" alt="" />
-              <div className="service_card_text">
-                <h1>Custom Applications</h1>
-                <p>Tailor-made ERP, CRM, and internal tools that streamline your operations.</p>
-              </div>
-            </div>
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service-img6.png" alt="" />
-              <div className="service_card_text">
-                <h1>SEO Optimization</h1>
-                <p>Rank higher, reach faster — with performance tuning and keyword-smart site structure.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <DynamicServices />
 
       <section id="why_us_section">
         <div className="why_us_container">
