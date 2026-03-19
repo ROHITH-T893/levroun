@@ -1,8 +1,12 @@
 // src/app/api/contact/route.js
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
+import { databases } from '@/lib/appwrite-server';
+import { ID } from 'appwrite';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const DB_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID;
+const LEADS_COLLECTION_ID = process.env.NEXT_PUBLIC_LEADS_COLLECTION_ID;
 
 export async function POST(request) {
   try {
@@ -32,6 +36,32 @@ export async function POST(request) {
     }
 
     console.log('📧 Sending email via Resend...');
+
+    // Save lead to Appwrite
+    let leadId = null;
+    try {
+      const lead = await databases.createDocument(
+        DB_ID,
+        LEADS_COLLECTION_ID,
+        ID.unique(),
+        {
+          firstName,
+          lastName: lastName || '',
+          email,
+          phone: phone || '',
+          service_requested: service || '',
+          message,
+          status: 'pending',
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        }
+      );
+      leadId = lead.$id;
+      console.log('✅ Lead saved to Appwrite:', leadId);
+    } catch (dbError) {
+      console.warn('⚠️ Failed to save lead to Appwrite:', dbError.message);
+      // Continue with email sending even if DB save fails
+    }
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
@@ -94,8 +124,9 @@ export async function POST(request) {
     console.log('✅ Email sent successfully:', data);
     return NextResponse.json({ 
       success: true,
-      message: 'Email sent successfully',
-      emailId: data?.id 
+      message: 'Email sent successfully and lead saved',
+      emailId: data?.id,
+      leadId: leadId
     });
 
   } catch (error) {
