@@ -1,7 +1,7 @@
 // src/app/api/services/route.js
 import { NextResponse } from 'next/server';
 import { databases } from '@/lib/appwrite-server';
-import { ID } from 'appwrite';
+import { ID } from 'node-appwrite';
 
 const DB_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID;
 const SERVICES_COLLECTION_ID = process.env.NEXT_PUBLIC_SERVICES_COLLECTION_ID;

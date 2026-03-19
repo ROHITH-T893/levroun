@@ -1,4 +1,5 @@
 // src/lib/appwrite-utils.js
+import { ID } from 'node-appwrite';
 import { databases } from './appwrite-server';
 
 const DB_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID;
@@ -73,7 +74,6 @@ export async function getPortfolio() {
  */
 export async function createLead(leadData) {
   try {
-    const { ID } = require('appwrite');
     const lead = await databases.createDocument(
       DB_ID,
       process.env.NEXT_PUBLIC_LEADS_COLLECTION_ID,

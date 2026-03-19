@@ -2,9 +2,8 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 import { databases } from '@/lib/appwrite-server';
-import { ID } from 'appwrite';
+import { ID } from 'node-appwrite';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const DB_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID;
 const LEADS_COLLECTION_ID = process.env.NEXT_PUBLIC_LEADS_COLLECTION_ID;
 
@@ -36,6 +35,8 @@ export async function POST(request) {
     }
 
     console.log('📧 Sending email via Resend...');
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     // Save lead to Appwrite
     let leadId = null;
