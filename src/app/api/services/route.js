@@ -1,7 +1,7 @@
 // src/app/api/services/route.js
 import { NextResponse } from 'next/server';
 import { databases } from '@/lib/appwrite-server';
-import { ID } from 'node-appwrite';
+import { ID, Query } from 'node-appwrite';
 
 const DB_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID;
 const SERVICES_COLLECTION_ID = process.env.NEXT_PUBLIC_SERVICES_COLLECTION_ID;
@@ -40,8 +40,7 @@ export async function GET() {
     const response = await databases.listDocuments(
       DB_ID,
       SERVICES_COLLECTION_ID,
-      [],
-      100
+      [Query.limit(100)]
     );
     
     const services = response.documents.sort((a, b) => (a.order || 0) - (b.order || 0));
