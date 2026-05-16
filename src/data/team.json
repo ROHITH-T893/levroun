@@ -1,0 +1,81 @@
+[
+  {
+    "_id": "1",
+    "name": "Rohith T",
+    "role": "Founder & Full Stack Developer",
+    "image": "/images/team/founder.png",
+    "bio": "Passionate about building scalable solutions. Expert in MERN stack, DevOps, and cloud architecture. Leads the company vision.",
+    "email": "rohith@levroun.tech",
+    "phone": "+91 XXXXX XXXXX",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com",
+      "twitter": "https://twitter.com",
+      "github": "https://github.com"
+    }
+  },
+  {
+    "_id": "2",
+    "name": "Priya Sharma",
+    "role": "Lead Designer & UI/UX Specialist",
+    "image": "/images/team/designer.png",
+    "bio": "Creative designer with 5+ years in digital design. Specializes in user-centric interfaces and brand identity.",
+    "email": "priya@levroun.tech",
+    "phone": "+91 XXXXX XXXXX",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com",
+      "dribbble": "https://dribbble.com",
+      "behance": "https://behance.net"
+    }
+  },
+  {
+    "_id": "3",
+    "name": "Arjun Patel",
+    "role": "Backend Engineer",
+    "image": "/images/team/engineer1.png",
+    "bio": "Backend specialist with expertise in Node.js, databases, and API architecture. Database optimization expert.",
+    "email": "arjun@levroun.tech",
+    "phone": "+91 XXXXX XXXXX",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com",
+      "github": "https://github.com"
+    }
+  },
+  {
+    "_id": "4",
+    "name": "Aisha Khan",
+    "role": "React Frontend Developer",
+    "image": "/images/team/engineer2.png",
+    "bio": "Modern web development expert. Passionate about React, performance optimization, and creating delightful user experiences.",
+    "email": "aisha@levroun.tech",
+    "phone": "+91 XXXXX XXXXX",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com",
+      "github": "https://github.com"
+    }
+  },
+  {
+    "_id": "5",
+    "name": "Vikram Singh",
+    "role": "iOS/Android Developer",
+    "image": "/images/team/mobile_dev.png",
+    "bio": "Mobile app specialist with 6+ years experience. Expert in React Native, Flutter, and native development.",
+    "email": "vikram@levroun.tech",
+    "phone": "+91 XXXXX XXXXX",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com",
+      "github": "https://github.com"
+    }
+  },
+  {
+    "_id": "6",
+    "name": "Neha Gupta",
+    "role": "Project Manager & QA Lead",
+    "image": "/images/team/manager.png",
+    "bio": "Ensures project delivery with excellence. Expert in Agile methodology, quality assurance, and client management.",
+    "email": "neha@levroun.tech",
+    "phone": "+91 XXXXX XXXXX",
+    "socialLinks": {
+      "linkedin": "https://linkedin.com"
+    }
+  }
+]

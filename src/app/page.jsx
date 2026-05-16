@@ -1,14 +1,9 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
-import Nav from "@/components/Nav";
 import React, { useState } from "react";
-import MobileNavigation from "@/components/MobileNavigation.js";
-import Footer from "@/components/Footer";
-import "./globals.css";
-import "../styles/MobileNavigation.css";
-import "../styles/Footer.css";
+import Hero from "@/components/Hero";
+import AnimatedSection from "@/components/AnimatedSection";
+
 export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
@@ -27,28 +22,15 @@ export default function Home() {
       service: formData.get("service"),
       message: formData.get("message"),
     };
-    
-    console.log("Form Data Submitted:", data);
 
     try {
-      // Use your API route instead of direct Resend
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       });
-
-      console.log('Response status:', response.status);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
       const result = await response.json();
-      console.log('✅ Email sent successfully:', result);
-
       if (result.success) {
         setSubmitStatus('success');
         alert("Thank you for contacting us! We will get back to you soon.");
@@ -58,7 +40,7 @@ export default function Home() {
         alert("There was an error sending your message. Please try again.");
       }
     } catch (error) {
-      console.error('❌ Error sending email:', error);
+      console.error('Error sending email:', error);
       setSubmitStatus('error');
       alert("There was an error sending your message. Please try again.");
     } finally {
@@ -67,507 +49,212 @@ export default function Home() {
   };
 
   return (
-    <>
-    <div className="" id="container_body">
-      <section className="hero" id="hero">
-        <span className="mobile_nav">
-          <MobileNavigation />
-        </span>
-        <span className="desktop_nav">
-          <Nav />
-        </span>
-        {/* <Nav />   */}
+    <div className="bg-[#06060c] text-[#e2e8f0]" id="container_body">
+      <Hero />
 
-        <div className="" id="hero_container">
-          <div id="Hero_content_hold">
-            <div className="hero_content">
-              <h1 className="hero_title">
-                We Build Secure, Scalable Digital Platforms
-              </h1>
-
-              <p className="hero_description">
-                From websites to custom apps, we empower startups and businesses
-                with clean code and rock-solid infrastructure.
-              </p>
-              <img
-                src="/images/hero_bg.png"
-                alt="Hero Background"
-                className="mobile_hero"
-              />
-            </div>
-            <div className="hero_btn">
-              <div className="getStart">
-                <h2>
-                  Let’s Build <br />
-                  Together
-                </h2>
-                <a href="#contact">
-                <button>
-                  <i style={{fontSize: "32px",fontWeight: "bold"}} className="fas fa-arrow-down"></i>
-                </button>
-                </a>
-              </div>
-              <div className="explore_service">
-                <h2>
-                  Explore Our <br />
-                  Services
-                </h2>
-                <a href="#services_section">
-                <button><i style={{fontSize: "26px"}} className="fa-solid fa-compass"></i></button>
-
-                </a>
-              </div>
-            </div>
-            <div className="mobile_social">
-              <div id="Image_hold_social_mobile">
-                <span id="span">
-                  <a href="https://www.facebook.com/LevrounEnterprises" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-facebook-f"></i>
-                  </a>
-                </span>
-                <span id="span">
-                  <a href="https://twitter.com/LevrounEnterprises" target="_blank" rel="noopener noreferrer">
-                  </a>
-                  <i className="fab fa-twitter"></i>
-                </span>
-                <span id="span">
-                  <a href="https://www.linkedin.com/company/levroun-enterprises" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-linkedin-in"></i>
-                  </a>
-                </span>
-                <span id="span">
-                  <a href="https://www.instagram.com/levroun.one" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-instagram"></i>
-                  </a>
-                </span>
-              </div>
-            </div>
-          </div>
-          <div id="image_hold">
-            <img
-              src="/images/hero_bg.png"
-              alt="Levroun Enterprises Hero Image"
-              className="img"
-            />
-
-            {/* Social Media Links */}
-            <div id="Image_hold_social_desktop">
-                             <span id="span">
-                  <a href="https://www.facebook.com/LevrounEnterprises" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-facebook-f"></i>
-                  </a>
-                </span>
-                <span id="span">
-                  <a href="https://twitter.com/LevrounEnterprises" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-twitter"></i>
-                  </a>
-                </span>
-                <span id="span">
-                  <a href="https://www.linkedin.com/company/levroun-enterprises" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-linkedin-in"></i>
-                  </a>
-                </span>
-                <span id="span">
-                  <a href="https://www.instagram.com/levroun.one" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-instagram"></i>
-                  </a>
-                </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Social Media Links for Mobile */}
-      </section>
-      <section id="ask_section">
-        <h1 id="ask_h1">Why You are here !</h1>
-        <div className="circle_hold">
-          <div className="circle_parent">
-            <div className="card1">
-              <h2>Need a Secure, Custom Website?</h2>
-              <p>We build high-performance sites tailored for your business.</p>
-            </div>
-            <div className="card2">
-              <h2>Looking to Scale Your Digital Product?</h2>
-              <p>From MVP to enterprise-grade apps, we’ve got you.</p>
-            </div>
-            <div className="card3">
-              <h2>Spending Too Much Time on Repetitive Tasks?</h2>
-              <p>We automate workflows so you can focus on what matters.</p>
-            </div>
-            <div className="card4">
-              <h2>Worried About Tech Setup or Deployment?</h2>
-              <p>We handle cloud hosting, domains, email & SEO.</p>
-            </div>
-            <div className="circle_child_1">
-              <div className="circle_child_2">
-                <div className="circle_child_3">
-                  <p>?</p>
+      {/* Why You are here Section */}
+      <AnimatedSection className="section-padding">
+        <div className="page-x">
+          <h2 className="text-fluid-h2 text-center mb-12 md:mb-20 font-['Righteous'] text-white">
+            Why are you <span className="text-metallic">here?</span>
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Secure & Custom", desc: "We build high-performance sites tailored for your business.", icon: "fa-shield-halved" },
+              { title: "Scaleable Products", desc: "From MVP to enterprise-grade apps, we've got you covered.", icon: "fa-layer-group" },
+              { title: "Workflow Automation", desc: "We automate repetitive tasks so you can focus on growth.", icon: "fa-gears" },
+              { title: "Seamless Deployment", desc: "We handle cloud, domains, email & SEO optimization.", icon: "fa-cloud-arrow-up" }
+            ].map((card, i) => (
+              <div key={i} className="glass-premium p-8 rounded-[40px] border border-white/5 hover:border-[#1AC2FF]/40 transition-all group relative">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#1AC2FF]/5 blur-2xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-[#1AC2FF]/10"></div>
+                <div className="w-14 h-14 bg-[#1AC2FF]/10 rounded-2xl flex items-center justify-center text-[#1AC2FF] mb-6 group-hover:scale-110 group-hover:rotate-12 transition-transform shadow-inner shadow-white/5">
+                  <i className={`fas ${card.icon} text-2xl`}></i>
                 </div>
+                <h3 className="text-xl font-black text-white mb-3 tracking-tight">{card.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed opacity-70 group-hover:opacity-100 transition-opacity">{card.desc}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-      </section>
-      {/*--------------------------------- about section-------------------------------- */}
-      <section id="about_section">
-        <div className="about_container">
-          <h1 className="about_title">Who We Are!</h1>
-          <div className="about_content">
-            <div className="about_img_hold">
-              <img
-                src="/images/about_img1.jpg"
-                alt="About Image 1"
-                className="about_img1"
-              />
-              <img
-                src="/images/about_img2.jpg"
-                alt="About Image 2"
-                className="about_img2"
-              />
+      </AnimatedSection>
+
+      {/* About / Who We Are Section */}
+      <AnimatedSection id="about_section" className="section-padding border-y border-white/5">
+        <div className="page-x">
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div className="w-full lg:w-1/2 relative group">
+              <div className="absolute -inset-4 bg-gradient-to-r from-[#1AC2FF] to-[#7000FF] rounded-[50px] blur-3xl opacity-10 transition-opacity group-hover:opacity-30"></div>
+              <div className="relative aspect-video lg:h-[480px] w-full overflow-hidden rounded-[40px] border border-white/10 shadow-2xl">
+                <img
+                  src="/images/about_img1.jpg"
+                  alt="About Levroun Enterprises"
+                  className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#06060c] via-transparent to-transparent opacity-60"></div>
+              </div>
             </div>
-            <div className="about_content_text">
-              <p className="about_text1">
-                At Levroun Enterprises, we are a next-generation technology
-                company driven by innovation, integrity, and impact. Founded
-                with a vision to bridge the gap between complex tech and
-                real-world business needs, we empower founders, startups, and
-                growing ventures to thrive in the digital era. Our journey began
-                with a single belief — that technology should be intuitive,
-                accessible, and secure. Backed by hands-on expertise in modern
-                development, cloud infrastructure, and cybersecurity, we
-                approach every challenge with a solutions-first mindset and a
-                commitment to long-term value.
+            <div className="w-full lg:w-1/2 space-y-8">
+              <div className="space-y-4">
+                <h2 className="text-fluid-h2 font-black text-white font-['Righteous'] uppercase tracking-tight leading-none">Who We <span className="text-metallic">Are</span></h2>
+                <div className="w-20 h-1.5 bg-[#1AC2FF] rounded-full"></div>
+              </div>
+              <p className="text-fluid-p text-gray-400 leading-relaxed font-['Inter'] opacity-90">
+                At Levroun Enterprises, we are a next-generation technology company driven by innovation and impact.
+                We bridge the gap between complex tech and real-world business needs, empowering founders to thrive in the digital era.
               </p>
-              <p className="about_text2">
-                We don’t just build platforms —<br />
-                <strong>
-                  we craft experiences, simplify systems, and scale ideas.
-                </strong>
-              </p>
-              <a href="#contact">
-                <button>Start Your Journey With Us</button>
+              <div className="p-8 glass-premium border-l-8 border-[#1AC2FF] rounded-r-[30px] shadow-lg">
+                <p className="text-white font-black italic text-lg md:text-2xl leading-tight">"We don't just build platforms — we craft experiences, simplify systems, and scale ideas."</p>
+              </div>
+              <a href="/about" className="inline-block w-full sm:w-auto">
+                <button className="w-full sm:w-auto group relative">
+                  <div className="absolute -inset-1 bg-white rounded-xl blur opacity-10 group-hover:opacity-30 transition"></div>
+                  <div className="relative bg-white text-[#06060c] px-8 py-4 rounded-xl font-black transition-all hover:bg-[#1AC2FF] hover:text-white uppercase tracking-[0.15em] text-sm">
+                    DISCOVER OUR JOURNEY
+                  </div>
+                </button>
               </a>
             </div>
           </div>
-          <div className="about_text2_mobile_section">
-            <p className="about_text2_mobile">
-              We don’t just build platforms —<br />
-              <strong>
-               axperiences, simplify systems, and scale ideas.
-              </strong>
-            </p>
-            <a href="#contact">
-            <button>Start Your Journey With Us</button>
-            </a>
-          </div>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <section className="py-20" id="services_section">
-        <div className="services_container">
-          <div className="text-center mb-16">
-            <h2
-              className="text-2xl md:text-3xl font-bold mb-4"
-              style={{ color: "#060134" }}
-            >
-              What We Offer !
-            </h2>
-            <p className="services_description">
-              Tailored digital solutions that scale with your ambition.
+      {/* Bento Services Section */}
+      <AnimatedSection className="section-padding" id="services_section">
+        <div className="page-x">
+          <div className="text-center mb-12 md:mb-20 space-y-4">
+            <h2 className="text-fluid-h2 text-white font-['Righteous'] uppercase tracking-tight">Expertise <span className="text-metallic">& Solutions</span></h2>
+            <p className="text-fluid-p text-gray-400 max-w-2xl mx-auto opacity-70">
+              Tailored digital ecosystems engineered for exponential growth.
             </p>
           </div>
 
-          <div className="service_card_hold">
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service-img1.png" alt="" />
-              <div className="service_card_text">
-                <h1>Web Development</h1>
-                <p>Custom websites built with modern tech — fast, responsive, scalable, and designed to convert.</p>
-              </div>
-            </div>
-
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service_img2.png" alt="" />
-              <div className="service_card_text">
-                <h1>App Development</h1>
-                <p>Cross-platform mobile and web apps with seamless UI/UX for startups and enterprises.</p>
-              </div>
-            </div>
-
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service-img3.png" alt="" />
-              <div className="service_card_text">
-                <h1> Graphic Designing</h1>
-                <p>Posters, flyers, banners, and digital creatives that speak your brand’s visual language.</p>
-              </div>
-            </div>
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service_img4.png" alt="" />
-              <div className="service_card_text">
-                <h1>E-Commerce Solutions</h1>
-                <p>End-to-end online store setups with custom pricing logic, CMS, Paytm integration & more.</p>
-              </div>
-            </div>
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service_img5.png" alt="" />
-              <div className="service_card_text">
-                <h1>Custom Applications</h1>
-                <p>Tailor-made ERP, CRM, and internal tools that streamline your operations.</p>
-              </div>
-            </div>
-            <div className="service_card text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <img src="/images/service-img6.png" alt="" />
-              <div className="service_card_text">
-                <h1>SEO Optimization</h1>
-                <p>Rank higher, reach faster — with performance tuning and keyword-smart site structure.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="why_us_section">
-        <div className="why_us_container">
-          <h1>Why Choose Us?</h1>
-          <h6>
-            We deliver quality, speed, and scalability — without breaking your
-            budget.
-          </h6>
-          <div className="why_us_card_hold">
-            <div className="why_us_card">
-              <img src="/images/whyUs_img1.png" alt="" />
-              <div className="whyUs_card-text">
-                <h1>Affordable Pricing</h1>
-                <p>Get premium solutions without burning your budget — transparent, scalable pricing for startups and enterprises alike.</p> 
-              </div>
-            </div>
-            <div className="why_us_card">
-              <img src="/images/whyUs_img2.png" alt="" />
-              <div className="whyUs_card-text">
-                <h1> Full Ownership</h1>
-                <p>You own 100% of your code, designs, and assets — no lock-ins, no hidden conditions.</p>
-              </div>
-            </div>
-            <div className="why_us_card">
-              <img src="/images/whyUs_img3.png" alt="" />
-              <div className="whyUs_card-text">
-                <h1>Built Secure</h1>
-                <p>Every project is crafted with a security-first mindset — from infrastructure to code, your data stays protected.</p>
-              </div>
-            </div>
-            <div className="why_us_card">
-              <img src="/images/whyUs_img4.png" alt="" />
-              <div className="whyUs_card-text">
-                <h1>Fast Delivery</h1>
-                <p>Agile processes, clear communication, and tight turnarounds mean your product ships on time — every time.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-{/* contact section */}
-<section id="contact">
-  <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-16">
-          <h1 className="about_title text-lg sm:text-5xl font-bold mb-6">
-           Let's Work Together
-          </h1>
-          <p className="about_description text-sm sm:text-md text-primary max-w-3xl mx-auto">
-            Ready to start your project? Get in touch with us for a free consultation
-            and let&apos;s discuss how we can help bring your ideas to life.
-          </p>
-        </div>
-
-        <div className="contact_container grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className=" bg-gray-50 p-8 rounded-lg">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a Message</h2>
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Your first name"
-                  />
+          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6 auto-rows-auto md:auto-rows-[340px]">
+            {[
+              { title: "Web Architecture", img: "/images/service-img1.png", desc: "Custom reactive websites built with modern high-performance frameworks.", span: "lg:col-span-8 md:col-span-3" },
+              { title: "Mobile Ecosystems", img: "/images/service_img2.png", desc: "Elite UI/UX for cross-platform apps.", span: "lg:col-span-4 md:col-span-3" },
+              { title: "E-Commerce", img: "/images/service_img4.png", desc: "Global retail scalability.", span: "lg:col-span-4 md:col-span-3" },
+              { title: "Custom ERP", img: "/images/service_img5.png", desc: "Internal automation engines.", span: "lg:col-span-8 md:col-span-3" }
+            ].map((service, i) => (
+              <div key={i} className={`${service.span} glass-premium rounded-[40px] p-8 md:p-10 flex flex-col justify-between group overflow-hidden relative min-h-[260px] md:min-h-0`}>
+                <div className="absolute top-0 right-0 w-64 h-64 bg-[#1AC2FF]/5 blur-3xl rounded-full -translate-y-1/2 translate-x-1/2 group-hover:bg-[#1AC2FF]/10 transition-colors"></div>
+                <div className="relative z-10">
+                  <img src={service.img} alt={service.title} className="w-14 h-14 mb-6 group-hover:scale-110 transition-transform duration-500" />
+                  <h3 className="text-2xl font-black text-white mb-3 font-['Righteous'] tracking-tight">{service.title}</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed max-w-md opacity-80">{service.desc}</p>
                 </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Your last name"
-                  />
+                <div className="mt-6 flex items-center gap-3 text-[#1AC2FF] font-black uppercase tracking-widest text-xs group-hover:gap-5 transition-all cursor-pointer">
+                  <span>View Solution</span>
+                  <i className="fa-solid fa-arrow-right-long text-base"></i>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
 
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="your@email.com"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="+91 XXXXX XXXXX"
-                />
-              </div>
-
-              <div>
-                <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                  Service Interested In
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                >
-                  <option value="">Select a service</option>
-                  <option value="web-development">Web Development</option>
-                  <option value="mobile-app">Mobile App Development</option>
-                  <option value="erp-solutions">ERP Solutions</option>
-                  <option value="ecommerce">E-commerce Platform</option>
-                  <option value="custom-software">Custom Software</option>
-                  <option value="digital-marketing"> Graphic Designing</option>
-                </select>
-              </div>
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Project Details *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows="5"
-                  required
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Tell us about your project requirements, timeline, and budget..."
-                ></textarea>
-              </div>
-
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="form_submit-btn w-full text-white py-3 px-6 rounded-lg font-semibold transition-colors"
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
+      {/* Why Us Section */}
+      <AnimatedSection id="why_us_section" className="section-padding">
+        <div className="page-x">
+          <div className="text-center space-y-4 mb-12 md:mb-20">
+            <h2 className="text-fluid-h2 text-white font-['Righteous'] uppercase tracking-tight leading-none">Why Choose <span className="text-metallic">Levroun</span></h2>
+            <p className="text-fluid-p text-gray-400 max-w-2xl mx-auto opacity-70">Elite engineering, agile delivery, and absolute transparency.</p>
           </div>
 
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Get in Touch</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            {[
+              { title: "Affordable", img: "/images/whyUs_img1.png", desc: "Premium solutions without the premium price tag." },
+              { title: "100% Ownership", img: "/images/whyUs_img2.png", desc: "You own every single line of code and asset." },
+              { title: "Built Secure", img: "/images/whyUs_img3.png", desc: "Security-first architecture for ultimate protection." },
+              { title: "Fast Shipping", img: "/images/whyUs_img4.png", desc: "Agile sprints ensuring you launch ahead of time." }
+            ].map((item, i) => (
+              <div key={i} className="flex flex-col items-center text-center gap-6 p-8 rounded-[40px] glass-premium group">
+                <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center p-3 group-hover:bg-[#1AC2FF]/10 group-hover:scale-110 transition-all duration-500">
+                  <img src={item.img} alt={item.title} className="w-full h-full object-contain" />
+                </div>
+                <div className="space-y-3">
+                  <h3 className="text-xl font-black text-white">{item.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-300 transition-colors">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
+
+      {/* Home Contact Section */}
+      <AnimatedSection id="contact" className="section-padding border-t border-white/5">
+        <div className="page-x">
+          <div className="text-center mb-12 md:mb-20 space-y-4">
+            <h2 className="text-fluid-h2 text-white font-['Righteous'] uppercase leading-none">Get in <span className="text-metallic">Touch</span></h2>
+            <p className="text-fluid-p text-gray-400 max-w-2xl mx-auto opacity-70">
+              Ready to architect your next digital leap?
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-20">
+            <div className="bg-[#0e0e1a] p-8 md:p-10 rounded-3xl border border-white/10 shadow-2xl">
+              <h3 className="text-2xl font-bold text-white mb-8">Send us a Message</h3>
+              <form className="space-y-5" onSubmit={handleSubmit}>
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-[#1AC2FF] uppercase tracking-widest">First Name</label>
+                    <input name="firstName" required className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#1AC2FF] transition-colors" />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold text-[#1AC2FF] uppercase tracking-widest">Last Name</label>
+                    <input name="lastName" required className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#1AC2FF] transition-colors" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-[#1AC2FF] uppercase tracking-widest">Email Address</label>
+                  <input name="email" type="email" required className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#1AC2FF] transition-colors" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-[#1AC2FF] uppercase tracking-widest">Project Details</label>
+                  <textarea name="message" rows="4" required className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#1AC2FF] transition-colors"></textarea>
+                </div>
+                <button type="submit" disabled={isSubmitting} className="w-full bg-[#1AC2FF] text-[#06060c] font-black py-4 rounded-xl transition-all hover:bg-white active:scale-95">
+                  {isSubmitting ? 'ENGINEERING YOUR MESSAGE...' : 'SEND PROJECT INQUIRY'}
+                </button>
+              </form>
+            </div>
+
+            <div className="space-y-10">
               <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-6 h-6 text-blue-600 mt-1">
-                    📧
+                <h3 className="text-2xl font-bold text-white">Direct Connect</h3>
+                <div className="space-y-5">
+                  <div className="flex items-center gap-5 group">
+                    <div className="w-14 h-14 rounded-2xl bg-[#1AC2FF]/10 flex items-center justify-center text-[#1AC2FF] group-hover:bg-[#1AC2FF] group-hover:text-white transition-all flex-shrink-0">
+                      <i className="fas fa-envelope text-xl"></i>
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-gray-500 uppercase">Email Us</p>
+                      <p className="text-white font-bold">contact@levroun.tech</p>
+                    </div>
                   </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                    <p className="text-gray-600">contact@levroun.tech</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-6 h-6 text-blue-600 mt-1">
-                    📱
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">Phone</h3>
-                    <p className="text-gray-600">+91 8939806110</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-6 h-6 text-blue-600 mt-1">
-                    📍
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">Location</h3>
-                    <p className="text-gray-600">India</p>
-                    <p className="text-gray-600">Serving clients worldwide</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="flex-shrink-0 w-6 h-6 text-blue-600 mt-1">
-                    ⏰
-                  </div>
-                  <div className="ml-4">
-                    <h3 className="text-lg font-medium text-gray-900">Business Hours</h3>
-                    <p className="text-gray-600">Monday - Friday: 10:00 AM - 5:00 PM IST</p>
-                    <p className="text-gray-600">Saturday: 10:00 AM - 4:00 PM IST</p>
+                  <div className="flex items-center gap-5 group">
+                    <div className="w-14 h-14 rounded-2xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-500 group-hover:text-white transition-all flex-shrink-0">
+                      <i className="fas fa-phone text-xl"></i>
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-gray-500 uppercase">Call Support</p>
+                      <p className="text-white font-bold">+91 8939806110</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">Free Consultation</h3>
-              <p className="text-gray-700 mb-4">
-                Get a free 30-minute consultation to discuss your project requirements 
-                and receive a customized solution proposal.
-              </p>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                  No obligation consultation
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                  Project timeline estimation
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                  Technology recommendations
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                  Budget-friendly solutions
-                </li>
-              </ul>
+              <div className="p-8 bg-gradient-to-br from-[#1AC2FF]/20 to-transparent rounded-3xl border border-[#1AC2FF]/20">
+                <h4 className="text-white font-bold mb-3">Strategic Partnership?</h4>
+                <p className="text-gray-400 mb-6 text-sm leading-relaxed">We are always looking for high-value collaborations and talent. If you have a vision, we have the engineering power.</p>
+                <a href="https://topmate.io/levroun/" target="_blank" className="text-[#1AC2FF] font-black uppercase text-sm flex items-center gap-2 hover:gap-4 transition-all">
+                  BOOK A STRATEGIC CALL <i className="fas fa-arrow-right"></i>
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </AnimatedSection>
     </div>
-</section>
-
-
-    </div>
-<Footer />
-    </>
   );
 }

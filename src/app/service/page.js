@@ -1,4 +1,4 @@
-
+import staticServicesData from '@/data/services.json';
 
 export const metadata = {
   title: 'Our Services - Web Development, Mobile Apps & ERP Solutions | Levroun Enterprises',
@@ -11,98 +11,91 @@ export const metadata = {
     images: ['/images/og-banner.png'],
     url: 'https://levroun.tech/service',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Our Services - Levroun Enterprises',
-    description: 'Professional web development, mobile app development, ERP solutions, e-commerce platforms, and digital marketing services.',
-  },
   alternates: {
     canonical: 'https://levroun.tech/service',
   },
 };
 
 export default function ServicesPage() {
-  const services = [
-    {
-      title: 'Web Development',
-      description: 'Custom websites and web applications built with modern technologies like React, Next.js, and Node.js.',
-      features: ['Responsive Design', 'SEO Optimization', 'Fast Loading', 'Secure Architecture'],
-      icon: '🌐'
-    },
-    {
-      title: 'Mobile App Development',
-      description: 'Native and cross-platform mobile applications for iOS and Android using React Native and Flutter.',
-      features: ['Cross-Platform', 'Native Performance', 'App Store Deployment', 'Push Notifications'],
-      icon: '📱'
-    },
-    {
-      title: 'ERP Solutions',
-      description: 'Enterprise Resource Planning systems to streamline business operations and improve efficiency.',
-      features: ['Inventory Management', 'Financial Tracking', 'Customer Relations', 'Reporting & Analytics'],
-      icon: '📊'
-    },
-    {
-      title: 'E-commerce Platforms',
-      description: 'Complete online store solutions with payment integration, inventory management, and order tracking.',
-      features: ['Payment Gateway', 'Inventory Control', 'Order Management', 'Customer Portal'],
-      icon: '🛒'
-    },
-    {
-      title: 'Custom Software',
-      description: 'Bespoke software solutions tailored to your specific business requirements and workflows.',
-      features: ['Custom Logic', 'Database Design', 'API Integration', 'Scalable Architecture'],
-      icon: '⚙️'
-    },
-    {
-      title: 'Digital Marketing',
-      description: 'SEO, social media marketing, and digital advertising to boost your online presence.',
-      features: ['SEO Optimization', 'Social Media', 'Google Ads', 'Analytics & Reporting'],
-      icon: '📈'
-    }
-  ];
+  const services = staticServicesData;
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold text-gray-900 mb-6">
+    <div className="min-h-screen bg-transparent text-[#e2e8f0] subpage-main">
+      <div className="page-x py-16">
+        <div className="text-center mb-16 space-y-4">
+          <h1 className="text-4xl md:text-6xl font-bold text-white font-['Righteous']">
             Our Services
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We provide comprehensive digital solutions to help your business thrive 
-            in the modern digital landscape. From web development to mobile apps 
-            and enterprise solutions.
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto font-['Inter']">
+            Comprehensive digital solutions tailored to your business needs.
+            From concept to deployment, we&apos;ve got you covered.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {services.map((service, index) => (
-            <div key={index} className="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <div className="text-4xl mb-4">{service.icon}</div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-3">{service.title}</h3>
-              <p className="text-gray-700 mb-4">{service.description}</p>
-              <ul className="space-y-2">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-center text-sm text-gray-600">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service) => (
+            <div
+              key={service._id || service.title}
+              className="bg-[#0e0e1a] rounded-2xl border border-white/10 overflow-hidden hover:border-[#1AC2FF]/50 transition-all duration-300 p-8 flex flex-col group"
+            >
+              <div className="mb-6 w-16 h-16 bg-[#1AC2FF]/10 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <img
+                  src={service.icon || '/images/icons/default.png'}
+                  alt={service.title}
+                  className="h-10 w-10 object-contain"
+                />
+              </div>
+
+              <h2 className="text-2xl font-bold text-white mb-4 font-['Righteous']">
+                {service.title}
+              </h2>
+
+              <p className="text-gray-400 mb-6 flex-grow leading-relaxed">
+                {service.description}
+              </p>
+
+              <div className="mb-6">
+                <h4 className="font-bold text-white text-sm uppercase tracking-wider mb-3 font-mono">
+                  Capabilities:
+                </h4>
+                <div className="flex flex-wrap gap-2">
+                  {(service.technologies || service.features || ['Custom Solution']).map((tech, index) => (
+                    <span
+                      key={index}
+                      className="bg-white/5 border border-white/10 text-[#1AC2FF]/80 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-6 border-t border-white/10">
+                <p className="font-black text-[#1AC2FF] text-lg mb-4">
+                  {service.price}
+                </p>
+                <a href="/contact">
+                  <button className="w-full bg-[#1AC2FF] hover:bg-white hover:text-[#06060c] text-[#06060c] font-black py-3 px-4 rounded-xl transition-all uppercase text-xs tracking-widest">
+                    GET QUOTE
+                  </button>
+                </a>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-lg p-8 text-center text-white">
-          <h2 className="text-3xl font-semibold mb-4">Ready to Get Started?</h2>
-          <p className="text-xl mb-6">
-            Let&apos;s discuss your project and find the perfect solution for your business needs.
+        <div className="mt-20 bg-gradient-to-br from-[#1AC2FF]/10 to-transparent rounded-3xl p-12 text-center border border-[#1AC2FF]/20">
+          <h2 className="text-3xl font-bold text-white mb-4 font-['Righteous']">
+            Tailored Solutions for Your Vision
+          </h2>
+          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+            We offer customized architectures tailored to your specific ecosystem.
+            Let&apos;s architect your next-gen platform together.
           </p>
-          <a 
-            href="/contact" 
-            className="inline-block bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
-          >
-            Contact Us Today
+          <a href="/contact">
+            <button className="bg-white text-[#06060c] hover:bg-[#1AC2FF] hover:text-white font-black py-4 px-10 rounded-2xl transition-all shadow-lg uppercase tracking-widest">
+              START YOUR PROJECT
+            </button>
           </a>
         </div>
       </div>

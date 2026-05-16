@@ -1,0 +1,46 @@
+{
+  "title": "About Levroun Enterprises",
+  "shortDescription": "We are a team of passionate developers and designers dedicated to building secure, scalable digital solutions for businesses of all sizes.",
+  "story": {
+    "title": "Our Story",
+    "content": "Founded with a vision to democratize technology for businesses across India, Levroun Enterprises specializes in creating custom web applications, mobile apps, and enterprise resource planning (ERP) solutions.\n\nWe understand that every business is unique, which is why we take a personalized approach to each project, ensuring that our solutions align perfectly with your business goals and objectives.\n\nAt Levroun Enterprises, we are a next-generation technology company driven by innovation, integrity, and impact. Founded with a vision to bridge the gap between complex tech and real-world business needs, we empower founders, startups, and growing ventures to thrive in the digital era."
+  },
+  "mission": "Our mission is to provide affordable, high-quality technology solutions that drive business growth and digital transformation.",
+  "vision": "To become the most trusted technology partner for businesses, startups, and entrepreneurs in India.",
+  "values": [
+    {
+      "title": "Innovation",
+      "description": "We constantly push boundaries to deliver cutting-edge solutions."
+    },
+    {
+      "title": "Integrity",
+      "description": "Honesty and transparency are the foundation of our relationships."
+    },
+    {
+      "title": "Excellence",
+      "description": "We never compromise on quality and always strive for perfection."
+    },
+    {
+      "title": "Customer First",
+      "description": "Your success is our success. We're committed to your growth."
+    }
+  ],
+  "highlights": [
+    {
+      "number": "50+",
+      "label": "Projects Delivered"
+    },
+    {
+      "number": "30+",
+      "label": "Happy Clients"
+    },
+    {
+      "number": "6+",
+      "label": "Team Members"
+    },
+    {
+      "number": "5+",
+      "label": "Years Experience"
+    }
+  ]
+}
