@@ -1,18 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-<<<<<<< HEAD
 import Hero from "@/components/Hero";
 import AnimatedSection from "@/components/AnimatedSection";
 
-=======
-import MobileNavigation from "@/components/MobileNavigation.js";
-import Footer from "@/components/Footer";
-import DynamicServices from "@/components/DynamicServices";
-import "./globals.css";
-import "../styles/MobileNavigation.css";
-import "../styles/Footer.css";
->>>>>>> 6ebd911105ff42deb347ebaae1bc903d779cbc32
 export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
@@ -127,7 +118,6 @@ export default function Home() {
         </div>
       </AnimatedSection>
 
-<<<<<<< HEAD
       {/* Bento Services Section */}
       <AnimatedSection className="section-padding" id="services_section">
         <div className="page-x">
@@ -151,83 +141,6 @@ export default function Home() {
                   <img src={service.img} alt={service.title} className="w-14 h-14 mb-6 group-hover:scale-110 transition-transform duration-500" />
                   <h3 className="text-2xl font-black text-white mb-3 font-['Righteous'] tracking-tight">{service.title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed max-w-md opacity-80">{service.desc}</p>
-=======
-      <DynamicServices />
-
-      <section id="why_us_section">
-        <div className="why_us_container">
-          <h1>Why Choose Us?</h1>
-          <h6>
-            We deliver quality, speed, and scalability — without breaking your
-            budget.
-          </h6>
-          <div className="why_us_card_hold">
-            <div className="why_us_card">
-              <img src="/images/whyUs_img1.png" alt="" />
-              <div className="whyUs_card-text">
-                <h1>Affordable Pricing</h1>
-                <p>Get premium solutions without burning your budget — transparent, scalable pricing for startups and enterprises alike.</p> 
-              </div>
-            </div>
-            <div className="why_us_card">
-              <img src="/images/whyUs_img2.png" alt="" />
-              <div className="whyUs_card-text">
-                <h1> Full Ownership</h1>
-                <p>You own 100% of your code, designs, and assets — no lock-ins, no hidden conditions.</p>
-              </div>
-            </div>
-            <div className="why_us_card">
-              <img src="/images/whyUs_img3.png" alt="" />
-              <div className="whyUs_card-text">
-                <h1>Built Secure</h1>
-                <p>Every project is crafted with a security-first mindset — from infrastructure to code, your data stays protected.</p>
-              </div>
-            </div>
-            <div className="why_us_card">
-              <img src="/images/whyUs_img4.png" alt="" />
-              <div className="whyUs_card-text">
-                <h1>Fast Delivery</h1>
-                <p>Agile processes, clear communication, and tight turnarounds mean your product ships on time — every time.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-{/* contact section */}
-<section id="contact">
-  <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-16">
-          <h1 className="about_title text-lg sm:text-5xl font-bold mb-6">
-           Let's Work Together
-          </h1>
-          <p className="about_description text-sm sm:text-md text-primary max-w-3xl mx-auto">
-            Ready to start your project? Get in touch with us for a free consultation
-            and let&apos;s discuss how we can help bring your ideas to life.
-          </p>
-        </div>
-
-        <div className="contact_container grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div className=" bg-gray-50 p-8 rounded-lg">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a Message</h2>
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    placeholder="Your first name"
-                  />
->>>>>>> 6ebd911105ff42deb347ebaae1bc903d779cbc32
                 </div>
                 <div className="mt-6 flex items-center gap-3 text-[#1AC2FF] font-black uppercase tracking-widest text-xs group-hover:gap-5 transition-all cursor-pointer">
                   <span>View Solution</span>
