@@ -1,6 +1,7 @@
 // src/app/api/portfolio/route.js
 import { NextResponse } from 'next/server';
 import { databases } from '@/lib/appwrite-server';
+import { Query } from 'node-appwrite';
 
 const DB_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID;
 const PORTFOLIO_COLLECTION_ID = process.env.NEXT_PUBLIC_PORTFOLIO_COLLECTION_ID;
@@ -10,8 +11,7 @@ export async function GET() {
     const response = await databases.listDocuments(
       DB_ID,
       PORTFOLIO_COLLECTION_ID,
-      [],
-      100
+      [Query.limit(100)]
     );
     
     return NextResponse.json({

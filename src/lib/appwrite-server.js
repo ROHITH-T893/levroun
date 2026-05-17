@@ -1,4 +1,5 @@
 // src/lib/appwrite-server.js
+import 'server-only';
 import { Client, Databases, Users } from 'node-appwrite';
 
 function createServerClient() {

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 "use client";
 
 import { useState } from 'react';
@@ -10,34 +9,10 @@ export default function AdminLoginPage() {
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-=======
-// src/app/admin/login/page.js
-'use client';
-
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import styles from '@/styles/admin-login.module.css';
-
-export default function AdminLogin() {
-  const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    // Check if already logged in
-    const userSession = localStorage.getItem('admin_session');
-    if (userSession) {
-      router.push('/admin');
-    }
-  }, [router]);
->>>>>>> 6ebd911105ff42deb347ebaae1bc903d779cbc32
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-<<<<<<< HEAD
     setIsLoading(true);
 
     try {
@@ -45,22 +20,12 @@ export default function AdminLogin() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
-=======
-    setLoading(true);
-
-    try {
-      const response = await fetch('/api/admin/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
->>>>>>> 6ebd911105ff42deb347ebaae1bc903d779cbc32
       });
 
       const data = await response.json();
 
       if (!response.ok) {
         setError(data.error || 'Login failed');
-<<<<<<< HEAD
         setIsLoading(false);
         return;
       }
@@ -71,29 +36,10 @@ export default function AdminLogin() {
       console.error('Login error:', err);
     } finally {
       setIsLoading(false);
-=======
-        return;
-      }
-
-      // Store session
-      localStorage.setItem('admin_session', JSON.stringify({
-        email: data.email,
-        userId: data.userId,
-        token: data.token
-      }));
-
-      router.push('/admin');
-    } catch (err) {
-      setError('An error occurred. Please try again.');
-      console.error(err);
-    } finally {
-      setLoading(false);
->>>>>>> 6ebd911105ff42deb347ebaae1bc903d779cbc32
     }
   };
 
   return (
-<<<<<<< HEAD
     <div className="min-h-screen bg-transparent flex items-center justify-center py-20 px-4">
       <div className="max-w-md w-full">
         <div className="bg-[#0e0e1a] rounded-3xl border border-white/10 shadow-2xl p-10 space-y-8 relative overflow-hidden">
@@ -166,59 +112,6 @@ export default function AdminLogin() {
               </p>
             </div>
           </div>
-=======
-    <div className={styles.loginContainer}>
-      <div className={styles.loginBox}>
-        <div className={styles.loginHeader}>
-          <h1>Levroun Admin</h1>
-          <p>Sign in to your account</p>
-        </div>
-
-        <form onSubmit={handleSubmit} className={styles.loginForm}>
-          {error && <div className={styles.errorMessage}>{error}</div>}
-
-          <div className={styles.formGroup}>
-            <label htmlFor="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              required
-              disabled={loading}
-            />
-          </div>
-
-          <div className={styles.formGroup}>
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              required
-              disabled={loading}
-            />
-          </div>
-
-          <button 
-            type="submit" 
-            className={styles.submitBtn}
-            disabled={loading}
-          >
-            {loading ? 'Signing in...' : 'Sign In'}
-          </button>
-        </form>
-
-        <div className={styles.loginFooter}>
-          <p>Demo Credentials:</p>
-          <p style={{ fontSize: '12px', color: '#999' }}>
-            Email: admin@levroun.tech<br/>
-            Password: (Set during setup)
-          </p>
->>>>>>> 6ebd911105ff42deb347ebaae1bc903d779cbc32
         </div>
       </div>
     </div>

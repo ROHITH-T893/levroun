@@ -1,7 +1,7 @@
 // src/app/api/leads/route.js
 import { NextResponse } from 'next/server';
 import { databases } from '@/lib/appwrite-server';
-import { ID } from 'node-appwrite';
+import { ID, Query } from 'node-appwrite';
 
 const DB_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID;
 const LEADS_COLLECTION_ID = process.env.NEXT_PUBLIC_LEADS_COLLECTION_ID;
@@ -57,8 +57,7 @@ export async function GET(request) {
     const response = await databases.listDocuments(
       DB_ID,
       LEADS_COLLECTION_ID,
-      [],
-      500
+      [Query.limit(500)]
     );
     
     return NextResponse.json({

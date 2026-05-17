@@ -1,5 +1,5 @@
 // src/lib/appwrite-utils.js
-import { ID } from 'node-appwrite';
+import { ID, Query } from 'node-appwrite';
 import { databases } from './appwrite-server';
 
 const DB_ID = process.env.NEXT_PUBLIC_APPWRITE_DATABASE_ID;
@@ -22,7 +22,7 @@ export async function getDocument(collectionId, documentId) {
  */
 export async function getCollection(collectionId, limit = 100) {
   try {
-    const response = await databases.listDocuments(DB_ID, collectionId, [], limit);
+    const response = await databases.listDocuments(DB_ID, collectionId, [Query.limit(limit)]);
     return response.documents;
   } catch (error) {
     console.error('Error fetching collection:', error);
