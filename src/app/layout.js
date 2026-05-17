@@ -1,6 +1,9 @@
 import './globals.css';
 import { SEO } from '../../next-seo.config';
 import ClientLayout from '@/components/ClientLayout';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
+import MobileNavigation from '@/components/MobileNavigation';
 
 export const metadata = {
   metadataBase: new URL('https://levroun.tech'),
@@ -35,15 +38,18 @@ export const metadata = {
   },
 };
 
+import NeuralBackground from '@/components/NeuralBackground';
+import VisitorTracker from '@/components/VisitorTracker';
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <head>
-        <meta name="theme-color" content="#0083B0" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta name="theme-color" content="#06060c" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Righteous&display=swap"
           rel="stylesheet"
         />
         <link
@@ -54,9 +60,20 @@ export default function RootLayout({ children }) {
           referrerPolicy="no-referrer"
         />
       </head>
-      <body suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true} className="bg-[#06060c] text-[#e2e8f0]">
+        <VisitorTracker />
+        <NeuralBackground />
         <ClientLayout>
-          {children}
+          <div id="global_layout_container" className="flex flex-col min-h-screen">
+            <span className="mobile_nav_global lg:hidden">
+              <MobileNavigation />
+            </span>
+            <span className="desktop_nav_global hidden lg:block">
+              <Nav />
+            </span>
+            <main className="flex-grow pt-[80px]">{children}</main>
+            <Footer />
+          </div>
         </ClientLayout>
       </body>
     </html>

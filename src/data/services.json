@@ -1,0 +1,56 @@
+[
+  {
+    "_id": "1",
+    "title": "Web Development",
+    "description": "Custom websites built with modern tech — fast, responsive, scalable, and designed to convert.",
+    "icon": "/images/service-img1.png",
+    "details": "We build high-performance websites using React, Next.js, and Node.js with a focus on user experience and SEO optimization.",
+    "technologies": ["React", "Next.js", "Node.js", "TailwindCSS", "PostgreSQL"],
+    "price": "Starting from ₹50,000"
+  },
+  {
+    "_id": "2",
+    "title": "App Development",
+    "description": "Cross-platform mobile and web apps with seamless UI/UX for startups and enterprises.",
+    "icon": "/images/service_img2.png",
+    "details": "Native iOS/Android apps and cross-platform solutions using React Native and Flutter with excellent performance.",
+    "technologies": ["React Native", "Flutter", "Firebase", "REST APIs"],
+    "price": "Starting from ₹1,00,000"
+  },
+  {
+    "_id": "3",
+    "title": "Graphic Designing",
+    "description": "Posters, flyers, banners, and digital creatives that speak your brand's visual language.",
+    "icon": "/images/service-img3.png",
+    "details": "Professional graphic design services including branding, print design, and digital marketing materials.",
+    "technologies": ["Adobe Creative Suite", "Figma", "Canva Pro"],
+    "price": "Starting from ₹10,000"
+  },
+  {
+    "_id": "4",
+    "title": "E-Commerce Solutions",
+    "description": "End-to-end online store setups with custom pricing logic, CMS, Paytm integration & more.",
+    "icon": "/images/service_img4.png",
+    "details": "Complete e-commerce solutions with payment gateways, inventory management, and analytics.",
+    "technologies": ["Shopify", "WooCommerce", "Next.js", "Stripe", "PayTM"],
+    "price": "Starting from ₹75,000"
+  },
+  {
+    "_id": "5",
+    "title": "Custom Applications",
+    "description": "Tailor-made ERP, CRM, and internal tools that streamline your operations.",
+    "icon": "/images/service_img5.png",
+    "details": "Enterprise-grade custom software solutions built to streamline your business processes.",
+    "technologies": ["Node.js", "React", "MongoDB", "PostgreSQL", "Docker"],
+    "price": "Custom Pricing"
+  },
+  {
+    "_id": "6",
+    "title": "SEO Optimization",
+    "description": "Rank higher, reach faster — with performance tuning and keyword-smart site structure.",
+    "icon": "/images/service-img6.png",
+    "details": "Comprehensive SEO services to improve your online visibility and drive organic traffic.",
+    "technologies": ["SEO Tools", "Analytics", "Schema Markup", "Performance Optimization"],
+    "price": "Starting from ₹20,000"
+  }
+]
